@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Habibi Aviation Partners — The bridge between nations in private aviation. Independent private jet charter, aircraft sales & acquisition, and jet card programs worldwide." />
+  <title>Habibi Aviation Partners — Private Aviation Brokerage</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       RESET & CUSTOM PROPERTIES
+    ═══════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal:      #1A1D23;
+      --charcoal-soft: #252830;
+      --charcoal-mid:  #2E323C;
+      --gold:          #B08D3C;
+      --gold-bright:   #C9A850;
+      --gold-dim:      rgba(176,141,60,.14);
+      --white:         #FFFFFF;
+      --off-white:     #F7F5F0;
+      --gray:          #8A8D96;
+      --light-gray:    #E4E2DC;
+      --text-body:     #3A3D45;
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Inter', system-ui, sans-serif;
+
+      --nav-h:  80px;
+      --pad-xl: 128px;
+      --pad-lg: 96px;
+      --pad-md: 64px;
+
+      --ease:     cubic-bezier(.25,.1,.25,1);
+      --ease-out: cubic-bezier(0,.0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img  { display: block; max-width: 100%; }
+    a    { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ═══════════════════════════════════════════════════════
+       UTILITIES
+    ═══════════════════════════════════════════════════════ */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 52px;
+    }
+    @media (max-width: 768px) { .wrap { padding: 0 24px; } }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .rule {
+      width: 44px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 22px;
+    }
+    .rule--c { margin-left: auto; margin-right: auto; }
+
+    .h2 {
+      font-family: var(--serif);
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 22px;
+    }
+    .h2--light { color: var(--white); }
+
+    .sub {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-body);
+      max-width: 580px;
+    }
+    .sub--dim  { color: rgba(255,255,255,.6); }
+    .sub--c    { margin: 0 auto; }
+
+    /* scroll-reveal */
+    .sr {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
+    }
+    .sr.in { opacity: 1; transform: none; }
+    .sr.d1 { transition-delay: .10s; }
+    .sr.d2 { transition-delay: .20s; }
+    .sr.d3 { transition-delay: .30s; }
+    .sr.d4 { transition-delay: .40s; }
+
+    /* focus ring */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       BUTTONS
+    ═══════════════════════════════════════════════════════ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 34px;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      transition: all .28s var(--ease);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-gold:hover {
+      background: var(--gold-bright);
+      box-shadow: 0 8px 28px rgba(176,141,60,.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost-w {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.45);
+    }
+    .btn-ghost-w:hover {
+      background: rgba(255,255,255,.1);
+      border-color: var(--white);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      height: var(--nav-h);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      transition: background .4s var(--ease), box-shadow .4s var(--ease);
+    }
+    .nav.solid {
+      background: rgba(26,29,35,.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(176,141,60,.18);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--white);
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .nav-logo strong { color: var(--gold); font-weight: 500; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.72);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta { margin-left: 28px; }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--white);
+      transition: all .3s var(--ease);
+      transform-origin: center;
+    }
+    .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* mobile drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      inset-inline: 0;
+      background: rgba(22,25,31,.98);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-top: 1px solid rgba(176,141,60,.18);
+      padding: 28px 24px 44px;
+      z-index: 199;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity .28s var(--ease), transform .28s var(--ease);
+    }
+    .nav-drawer.open {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .nav-drawer ul {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .nav-drawer ul a {
+      display: block;
+      padding: 15px 0;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.78);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: color .2s;
+    }
+    .nav-drawer ul a:hover { color: var(--gold); }
+    .nav-drawer .btn-gold { width: 100%; justify-content: center; }
+
+    @media (max-width: 920px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-burger  { display: flex; }
+      .nav-drawer  { display: block; }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /*
+      SWAP HERO IMAGE:
+      Replace the URL below with your own high-resolution photography.
+      Recommended: private jet on a runway at dusk, or aerial tarmac scene.
+      Suggested resolution: 2400 × 1600 px minimum.
+    */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1920&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 38%;
+      transform: scale(1.06);
+      transition: transform 10s ease-out;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(26,29,35,.62) 0%,
+        rgba(26,29,35,.38) 45%,
+        rgba(26,29,35,.76) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 28px;
+      padding-top: var(--nav-h);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .8s var(--ease-out) .3s, transform .8s var(--ease-out) .3s;
+    }
+
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(42px, 7.5vw, 92px);
+      font-weight: 300;
+      line-height: 1.04;
+      color: var(--white);
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .9s var(--ease-out) .5s, transform .9s var(--ease-out) .5s;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+
+    .hero-sub {
+      font-size: clamp(15px, 2.2vw, 19px);
+      font-weight: 300;
+      color: rgba(255,255,255,.78);
+      letter-spacing: .02em;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .8s var(--ease-out) .72s, transform .8s var(--ease-out) .72s;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .8s var(--ease-out) .92s, transform .8s var(--ease-out) .92s;
+    }
+
+    /* Trigger hero animations */
+    .hero.ready .hero-eyebrow,
+    .hero.ready .hero-h1,
+    .hero.ready .hero-sub,
+    .hero.ready .hero-ctas {
+      opacity: 1;
+      transform: none;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.42);
+      font-size: 9px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.45), transparent);
+      animation: scrollBob 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollBob {
+      0%,100% { opacity: .45; transform: scaleY(1); }
+      50%      { opacity: .9;  transform: scaleY(1.12); }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════════════════════════ */
+    .services {
+      background: var(--white);
+      padding: var(--pad-xl) 0;
+    }
+
+    .services-hdr {
+      text-align: center;
+      margin-bottom: 68px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    @media (max-width: 920px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .services-grid { grid-template-columns: 1fr; } }
+
+    .svc-card {
+      background: var(--off-white);
+      padding: 48px 34px 44px;
+      position: relative;
+      overflow: hidden;
+      transition: background .38s var(--ease);
+    }
+    .svc-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .38s var(--ease);
+    }
+    .svc-card:hover { background: var(--charcoal); }
+    .svc-card:hover::after { transform: scaleX(1); }
+
+    .svc-icon {
+      width: 42px;
+      height: 42px;
+      color: var(--gold);
+      margin-bottom: 28px;
+      transition: color .3s;
+    }
+    .svc-card:hover .svc-icon { color: var(--gold-bright); }
+
+    .svc-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+      line-height: 1.2;
+      transition: color .3s;
+    }
+    .svc-card:hover .svc-title { color: var(--white); }
+
+    .svc-desc {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-body);
+      transition: color .3s;
+    }
+    .svc-card:hover .svc-desc { color: rgba(255,255,255,.62); }
+
+    /* ═══════════════════════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════════════════════ */
+    .about {
+      background: var(--charcoal);
+      padding: var(--pad-xl) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .about::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(176,141,60,.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 52px; }
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-inner {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    @media (max-width: 900px) {
+      .about-img-inner { aspect-ratio: 16/9; max-height: 380px; }
+    }
+
+    /*
+      SWAP ABOUT IMAGE:
+      Replace this Unsplash URL with an elegant interior shot of a private jet cabin,
+      or a exterior shot of an aircraft on a private tarmac.
+      Suggested resolution: 800 × 1000 px minimum.
+    */
+    .about-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 6s ease-out;
+    }
+    .about-img-inner:hover .about-img { transform: scale(1.04); }
+
+    .about-frame {
+      position: absolute;
+      top: 22px; left: 22px; right: -22px; bottom: -22px;
+      border: 1px solid rgba(176,141,60,.28);
+      pointer-events: none;
+    }
+    @media (max-width: 900px) { .about-frame { display: none; } }
+
+    .about-content .rule { background: var(--gold); }
+    .about-content .h2  { color: var(--white); }
+    .about-content .sub { color: rgba(255,255,255,.62); }
+
+    .about-quote {
+      margin-top: 40px;
+      padding: 26px 30px;
+      border-left: 2px solid var(--gold);
+      background: rgba(176,141,60,.07);
+    }
+    .about-quote p {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: rgba(255,255,255,.82);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 42px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-lbl {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.38);
+    }
+    @media (max-width: 460px) { .stat-num { font-size: 32px; } }
+
+    /* ═══════════════════════════════════════════════════════
+       WHY HABIBI
+    ═══════════════════════════════════════════════════════ */
+    .why {
+      background: var(--white);
+      padding: var(--pad-xl) 0;
+    }
+    .why-hdr { text-align: center; margin-bottom: 80px; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 44px;
+    }
+    @media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .why-grid { grid-template-columns: 1fr; } }
+
+    .why-card { text-align: center; }
+
+    .why-icon-wrap {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      transition: background .3s, transform .3s;
+    }
+    .why-card:hover .why-icon-wrap {
+      background: var(--gold);
+      transform: translateY(-5px);
+    }
+    .why-icon {
+      width: 26px;
+      height: 26px;
+      color: var(--gold);
+      transition: color .3s;
+    }
+    .why-card:hover .why-icon { color: var(--white); }
+
+    .why-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .why-desc {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-body);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       HOW IT WORKS
+    ═══════════════════════════════════════════════════════ */
+    .how {
+      background: var(--charcoal);
+      padding: var(--pad-xl) 0;
+    }
+    .how-hdr { text-align: center; margin-bottom: 80px; }
+    .how-hdr .sub { color: rgba(255,255,255,.52); margin: 0 auto; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: start;
+      margin-bottom: 100px;
+    }
+    .step-arrow {
+      padding-top: 32px;
+      color: var(--gold);
+      opacity: .45;
+    }
+    .step-arrow svg { width: 28px; height: 28px; }
+
+    .step { text-align: center; padding: 0 20px; }
+    .step-num {
+      font-family: var(--serif);
+      font-size: 68px;
+      font-weight: 300;
+      color: rgba(176,141,60,.13);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .step-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,.52);
+    }
+
+    @media (max-width: 760px) {
+      .steps { grid-template-columns: 1fr; margin-bottom: 72px; }
+      .step-arrow { display: none; }
+      .step {
+        padding: 28px 0;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+        text-align: left;
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 0 20px;
+        align-items: start;
+      }
+      .step-num {
+        font-size: 44px;
+        margin-bottom: 0;
+        grid-row: 1 / 3;
+        padding-top: 2px;
+      }
+      .step-title { margin-bottom: 6px; }
+      .step:last-child { border-bottom: none; }
+    }
+
+    /* Testimonials */
+    .testi {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 80px;
+    }
+    .testi-hdr { text-align: center; margin-bottom: 48px; }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    @media (max-width: 760px) { .testi-grid { grid-template-columns: 1fr; } }
+
+    .testi-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+      padding: 36px 30px 30px;
+      position: relative;
+    }
+    .testi-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 18px; left: 26px;
+      font-family: var(--serif);
+      font-size: 60px;
+      color: var(--gold);
+      opacity: .22;
+      line-height: 1;
+    }
+    .testi-text {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.68;
+      color: rgba(255,255,255,.72);
+      margin-bottom: 24px;
+      padding-top: 18px;
+    }
+    .testi-author {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .testi-role {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(255,255,255,.32);
+      margin-top: 4px;
+    }
+    .testi-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 12px;
+      font-style: italic;
+      color: rgba(255,255,255,.26);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════════════════════ */
+    .contact {
+      background: var(--off-white);
+      padding: var(--pad-xl) 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 52px; } }
+
+    .contact-detail {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-top: 40px;
+    }
+    .contact-detail + .contact-detail { margin-top: 22px; }
+    .cd-icon {
+      width: 18px; height: 18px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .cd-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+    .cd-val {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+    .cd-avail {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    /* Form */
+    .form-box {
+      background: var(--white);
+      padding: 48px 44px 44px;
+      box-shadow: 0 4px 48px rgba(26,29,35,.08);
+    }
+    @media (max-width: 520px) { .form-box { padding: 36px 24px 32px; } }
+
+    .form-title {
+      font-family: var(--serif);
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 32px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .f-field {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .f-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .f-label span { color: var(--gold); margin-left: 2px; }
+
+    .f-input, .f-area {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--off-white);
+      border: 1px solid var(--light-gray);
+      padding: 13px 16px;
+      border-radius: 1px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none;
+    }
+    .f-input:focus, .f-area:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(176,141,60,.1);
+    }
+    .f-input.err, .f-area.err { border-color: #C0392B; }
+
+    .f-err {
+      font-size: 12px;
+      color: #C0392B;
+      display: none;
+    }
+    .f-field.bad .f-err { display: block; }
+
+    .f-area { resize: vertical; min-height: 118px; }
+
+    .f-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 6px;
+      padding: 16px;
+    }
+    .f-submit:disabled { opacity: .65; cursor: not-allowed; }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 52px 20px;
+    }
+    .fs-icon {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .fs-icon svg { width: 26px; height: 26px; color: var(--gold); }
+    .form-success h3 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+    }
+    .form-success p { font-size: 15px; font-weight: 300; color: var(--text-body); }
+
+    /* ═══════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════ */
+    .footer {
+      background: var(--charcoal);
+      padding-top: 72px;
+      border-top: 1px solid rgba(176,141,60,.18);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; gap: 36px; } }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .footer-logo strong { color: var(--gold); font-weight: 500; }
+
+    .footer-tagline {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255,255,255,.38);
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .social-link {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.13);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.44);
+      transition: all .22s;
+    }
+    .social-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(176,141,60,.1);
+    }
+    .social-link svg { width: 15px; height: 15px; }
+
+    .footer-col-hdr {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+    .footer-col ul a {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,.52);
+      transition: color .2s;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-col p {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,.52);
+      line-height: 1.6;
+    }
+    .footer-col p + p { margin-top: 6px; }
+    .avail-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      padding: 22px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,.28);
+    }
+    .footer-disc {
+      font-size: 12px;
+      font-style: italic;
+      color: rgba(255,255,255,.22);
+      text-align: right;
+      max-width: 520px;
+    }
+    @media (max-width: 520px) {
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-disc   { text-align: left; }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       SKIP LINK
+    ═══════════════════════════════════════════════════════ */
+    .skip {
+      position: absolute;
+      top: -48px; left: 0;
+      background: var(--gold);
+      color: var(--white);
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      z-index: 999;
+      transition: top .2s;
+    }
+    .skip:focus { top: 0; }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip">Skip to main content</a>
+
+  <!-- ╔══════════════════════════════════════════════════════╗
+       ║  NAVIGATION                                          ║
+       ╚══════════════════════════════════════════════════════╝ -->
+  <header>
+    <nav class="nav" id="nav" aria-label="Primary navigation">
+      <div class="wrap">
+        <div class="nav-inner">
+
+          <a href="#" class="nav-logo" aria-label="Habibi Aviation Partners — home">
+            Habibi <strong>Aviation</strong> Partners
+          </a>
+
+          <ul class="nav-links" role="list">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+          <a href="#contact" class="btn btn-gold nav-cta">Request a Flight</a>
+
+          <button
+            class="nav-burger"
+            id="burgerBtn"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navDrawer"
+          >
+            <span></span><span></span><span></span>
+          </button>
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile drawer -->
+    <div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Site navigation">
+      <ul>
+        <li><a href="#services" class="m-link">Services</a></li>
+        <li><a href="#about"    class="m-link">About</a></li>
+        <li><a href="#why"      class="m-link">Why Us</a></li>
+        <li><a href="#contact"  class="m-link">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-gold m-link">Request a Flight</a>
+    </div>
+  </header>
+
+
+  <main id="main">
+
+    <!-- ╔══════════════════════════════════════════════════════╗
+         ║  HERO                                                ║
+         ╚══════════════════════════════════════════════════════╝ -->
+    <section class="hero" id="hero" aria-label="Hero">
+
+      <!--
+        PHOTO SWAP — HERO BACKGROUND
+        Replace the src URL inside the CSS selector `.hero-bg` (in the <style> block above)
+        with your own high-resolution photography.
+        Recommended shot: private jet parked at an executive terminal at golden hour,
+        or an aerial runway scene at dusk. Min 2400 × 1600 px.
+      -->
+      <div class="hero-bg" id="heroBg" role="img" aria-label="Private jet aircraft on a sunlit runway"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">Independent Private Aviation Brokerage</p>
+
+        <h1 class="hero-h1">
+          The <em>bridge</em> between<br>
+          nations in private aviation.
+        </h1>
+
+        <p class="hero-sub">
+          Independent counsel. Global reach. A personal advisor reachable around the clock.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-gold">Request a Charter</a>
+          <a href="#contact" class="btn btn-ghost-w">Speak to an Advisor</a>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="hero-scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════════════════════════╗
+         ║  SERVICES                                            ║
+         ╚══════════════════════════════════════════════════════╝ -->
+    <section class="services" id="services" aria-labelledby="svc-h">
+      <div class="wrap">
+
+        <div class="services-hdr sr">
+          <div class="rule rule--c"></div>
+          <p class="eyebrow">What We Do</p>
+          <h2 class="h2" id="svc-h">Bespoke aviation services,<br>crafted around you.</h2>
+          <p class="sub sub--c">From a single charter to a full aircraft acquisition, we bring deep expertise and genuine independence to every brief.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <!-- Card 1: Private Jet Charter -->
+          <article class="svc-card sr d1">
+            <svg class="svc-icon" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 24l3.5-9 11 3.5L27 6l7 2.5L22 24l-18 .5z"/>
+              <path d="M7.5 24.5L5.5 31"/>
+              <path d="M12 25.5l-1 4"/>
+              <path d="M5 31h13"/>
+              <circle cx="34" cy="10" r="2" fill="currentColor" stroke="none" opacity=".4"/>
+            </svg>
+            <h3 class="svc-title">Private Jet Charter</h3>
+            <p class="svc-desc">On-demand charter worldwide, sourced from the open market and safety-vetted for every departure. We match you with the right aircraft at the right price — with no fleet bias, ever.</p>
+          </article>
+
+          <!-- Card 2: Aircraft Sales -->
+          <article class="svc-card sr d2">
+            <svg class="svc-icon" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="16" width="30" height="20" rx="2"/>
+              <path d="M15 16v-4a6 6 0 0112 0v4"/>
+              <circle cx="21" cy="26" r="3"/>
+              <path d="M21 23v-2M21 32v-3"/>
+              <path d="M25.6 28.6l1.4 1.4M14 24l1.4 1.4"/>
+              <path d="M16.4 28.6L15 30M28 24l-1.4 1.4"/>
+            </svg>
+            <h3 class="svc-title">Aircraft Sales & Acquisition</h3>
+            <p class="svc-desc">Searching for your next aircraft, or ready to sell? Our team navigates the global pre-owned market — from brief and market analysis through pre-purchase inspection, title, and closing.</p>
+          </article>
+
+          <!-- Card 3: Jet Card -->
+          <article class="svc-card sr d3">
+            <svg class="svc-icon" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="4" y="10" width="34" height="22" rx="2"/>
+              <path d="M4 17h34"/>
+              <path d="M21 27l2-5 2 5h5l-4 3 1.5 5L21 32l-6.5 3 1.5-5-4-3h5z" stroke-width="1.2"/>
+            </svg>
+            <h3 class="svc-title">Jet Card & Membership Programs</h3>
+            <p class="svc-desc">Frequent flyers deserve more certainty. We advise on and arrange jet-card and subscription programs that fit your travel profile — guaranteed availability, fixed pricing, simplified booking.</p>
+          </article>
+
+          <!-- Card 4: Advisory -->
+          <article class="svc-card sr d4">
+            <svg class="svc-icon" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="21" cy="21" r="16"/>
+              <path d="M21 5c-4 7-4 25 0 32"/>
+              <path d="M21 5c4 7 4 25 0 32"/>
+              <path d="M5 21h32"/>
+              <path d="M7 13h28"/>
+              <path d="M7 29h28"/>
+            </svg>
+            <h3 class="svc-title">Advisory & Aircraft Management</h3>
+            <p class="svc-desc">For owners seeking expert oversight — we provide impartial advice on fleet strategy, operator selection, charter revenue optimisation, and ongoing aircraft management relationships.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════════════════════════╗
+         ║  ABOUT / THE BRIDGE                                  ║
+         ╚══════════════════════════════════════════════════════╝ -->
+    <section class="about" id="about" aria-labelledby="about-h">
+      <div class="wrap">
+        <div class="about-grid">
+
+          <!-- Image -->
+          <div class="about-img-wrap sr">
+            <!--
+              PHOTO SWAP — ABOUT SECTION
+              Replace the src below with an elegant interior shot of a private jet cabin,
+              or a tasteful exterior photo of an aircraft at a private terminal.
+              Min 800 × 1000 px recommended.
+            -->
+            <div class="about-img-inner">
+              <img
+                class="about-img"
+                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&auto=format&fit=crop&q=80"
+                alt="Aerial view of a private aircraft on a sunlit executive apron"
+                loading="lazy"
+                width="900"
+                height="1125"
+              />
+            </div>
+            <div class="about-frame" aria-hidden="true"></div>
+          </div>
+
+          <!-- Content -->
+          <div class="about-content sr d2">
+            <div class="rule"></div>
+            <p class="eyebrow">The Habibi Difference</p>
+            <h2 class="h2 h2--light" id="about-h">We represent you,<br>not a fleet.</h2>
+            <p class="sub sub--dim">
+              Habibi Aviation Partners is an independent, global brokerage — we own no aircraft. That independence is our most important asset. Every recommendation is driven purely by what is right for your mission, your safety requirements, and your budget — never by a fleet to fill.
+            </p>
+            <p class="sub sub--dim" style="margin-top: 18px;">
+              With strong roots across the Gulf, Middle East, Europe, and beyond, we are more than a booking service: we are a long-term relationship. Your advisor learns your preferences, your standards, and your schedule — and is available whenever you need them.
+            </p>
+            <blockquote class="about-quote">
+              <p>"Because we don't own the aircraft, we are free to source the world's finest operators and recommend only what is truly right for you — with no hidden fleet incentive."</p>
+            </blockquote>
+            <div class="about-stats">
+              <div>
+                <div class="stat-num">24/7</div>
+                <div class="stat-lbl">Advisor access</div>
+              </div>
+              <div>
+                <div class="stat-num">6+</div>
+                <div class="stat-lbl">Continents served</div>
+              </div>
+              <div>
+                <div class="stat-num">100%</div>
+                <div class="stat-lbl">Independent</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════════════════════════╗
+         ║  WHY HABIBI                                          ║
+         ╚══════════════════════════════════════════════════════╝ -->
+    <section class="why" id="why" aria-labelledby="why-h">
+      <div class="wrap">
+
+        <div class="why-hdr sr">
+          <div class="rule rule--c"></div>
+          <p class="eyebrow">Why Choose Us</p>
+          <h2 class="h2" id="why-h">Four reasons our clients<br>stay with us for life.</h2>
+        </div>
+
+        <div class="why-grid">
+
+          <article class="why-card sr d1">
+            <div class="why-icon-wrap">
+              <svg class="why-icon" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M13 3l9 4v9c0 5.5-4 8.5-9 10C8 24.5 4 21.5 4 16V7l9-4z"/>
+                <path d="M9 13l3 3 5-5"/>
+              </svg>
+            </div>
+            <h3 class="why-title">Independent & Unconflicted</h3>
+            <p class="why-desc">We own no aircraft and have no fleet obligations. Your interests are always first — our recommendation is the right aircraft for you, full stop.</p>
+          </article>
+
+          <article class="why-card sr d2">
+            <div class="why-icon-wrap">
+              <svg class="why-icon" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="13" cy="13" r="10"/>
+                <path d="M9 13l3 3 5-5"/>
+              </svg>
+            </div>
+            <h3 class="why-title">Safety-First Vetting</h3>
+            <p class="why-desc">Every operator is rigorously assessed against international safety standards before your name appears on a manifest. We trust nothing we have not verified ourselves.</p>
+          </article>
+
+          <article class="why-card sr d3">
+            <div class="why-icon-wrap">
+              <svg class="why-icon" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="13" cy="13" r="10"/>
+                <path d="M13 7v6l4 2"/>
+              </svg>
+            </div>
+            <h3 class="why-title">A Personal Advisor, 24/7</h3>
+            <p class="why-desc">Your dedicated advisor is reachable any hour, any time zone. Private aviation does not follow office hours — and neither do we. One call, one relationship, every time.</p>
+          </article>
+
+          <article class="why-card sr d4">
+            <div class="why-icon-wrap">
+              <svg class="why-icon" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="13" cy="13" r="10"/>
+                <path d="M13 3c-3 5-3 15 0 20"/>
+                <path d="M13 3c3 5 3 15 0 20"/>
+                <path d="M3 13h20"/>
+                <path d="M4.5 8h17"/>
+                <path d="M4.5 18h17"/>
+              </svg>
+            </div>
+            <h3 class="why-title">Truly Global Reach</h3>
+            <p class="why-desc">From the Gulf to Geneva, New York to Nairobi — our network spans operators, FBOs, and partners across every major aviation corridor in the world.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════════════════════════╗
+         ║  HOW IT WORKS + TESTIMONIALS                         ║
+         ╚══════════════════════════════════════════════════════╝ -->
+    <section class="how" id="how" aria-labelledby="how-h">
+      <div class="wrap">
+
+        <div class="how-hdr sr">
+          <div class="rule rule--c"></div>
+          <p class="eyebrow">The Process</p>
+          <h2 class="h2 h2--light" id="how-h">From brief to boarding<br>in three steps.</h2>
+          <p class="sub">We handle every detail so you can focus on the journey.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step sr d1">
+            <div class="step-num" aria-hidden="true">01</div>
+            <h3 class="step-title">Tell Us Your Trip</h3>
+            <p class="step-desc">Share your route, dates, group size, and any preferences. Your advisor takes a full brief — no detail is too small when it comes to your comfort and safety.</p>
+          </div>
+
+          <div class="step-arrow sr" aria-hidden="true">
+            <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 14h20M16 7l8 7-8 7"/>
+            </svg>
+          </div>
+
+          <div class="step sr d2">
+            <div class="step-num" aria-hidden="true">02</div>
+            <h3 class="step-title">We Source & Vet</h3>
+            <p class="step-desc">We canvas the open market, evaluate operator safety records, compare pricing, and present you with the best-matched options — transparently, with our honest recommendation.</p>
+          </div>
+
+          <div class="step-arrow sr" aria-hidden="true">
+            <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 14h20M16 7l8 7-8 7"/>
+            </svg>
+          </div>
+
+          <div class="step sr d3">
+            <div class="step-num" aria-hidden="true">03</div>
+            <h3 class="step-title">You Fly</h3>
+            <p class="step-desc">We handle all logistics, documentation, and ground coordination. Your only task is to arrive at the aircraft and enjoy the journey. We remain available throughout.</p>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="testi sr">
+          <div class="testi-hdr">
+            <div class="rule rule--c"></div>
+            <p class="eyebrow">Client Voices</p>
+          </div>
+
+          <div class="testi-grid">
+            <!--
+              PLACEHOLDER TESTIMONIALS
+              Replace the three cards below with verified client quotes before publishing.
+              Use initials or agreed attribution to preserve client privacy.
+            -->
+            <div class="testi-card">
+              <p class="testi-text">"The level of personal attention Habibi Aviation Partners provides is unparalleled. They sourced the perfect aircraft for our Gulf-to-Geneva route and had us confirmed in under two hours."</p>
+              <div class="testi-author">A.K.</div>
+              <div class="testi-role">Private Client — Riyadh, Saudi Arabia</div>
+            </div>
+
+            <div class="testi-card">
+              <p class="testi-text">"What sets them apart is that they genuinely have no horse in the race. Every recommendation felt completely aligned with our interests — which is rare to find in private aviation."</p>
+              <div class="testi-author">M.F.</div>
+              <div class="testi-role">Corporate Travel Director — Dubai, UAE</div>
+            </div>
+
+            <div class="testi-card">
+              <p class="testi-text">"From my first message to wheels-up took less than four hours. My advisor stayed reachable throughout the entire trip. This is what private aviation should feel like."</p>
+              <div class="testi-author">S.L.</div>
+              <div class="testi-role">Entrepreneur — London, UK</div>
+            </div>
+          </div>
+
+          <p class="testi-note">* Client initials used at their request. Testimonials represent client feedback.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════════════════════════╗
+         ║  CONTACT                                             ║
+         ╚══════════════════════════════════════════════════════╝ -->
+    <section class="contact" id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <div class="contact-grid">
+
+          <!-- Contact info -->
+          <div class="sr">
+            <div class="rule"></div>
+            <p class="eyebrow">Get in Touch</p>
+            <h2 class="h2" id="contact-h">Your journey<br>begins here.</h2>
+            <p class="sub">
+              Share your trip details and a dedicated advisor will respond within the hour. For urgent or same-day requests, please call or message us directly.
+            </p>
+
+            <div class="contact-detail">
+              <svg class="cd-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 4a1 1 0 011-1h10a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/>
+                <path d="M3 4l6 5 6-5"/>
+              </svg>
+              <div>
+                <div class="cd-lbl">Email</div>
+                <!-- PLACEHOLDER: Replace with your actual email address -->
+                <div class="cd-val">fly@habibiaviationpartners.com</div>
+                <div class="cd-avail">Available 24/7</div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <svg class="cd-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 4c.5-.5 1.3-.5 1.8 0l2 2c.5.5.5 1.3 0 1.8L6 8.5A9.3 9.3 0 009.5 12l.7-.8c.5-.5 1.3-.5 1.8 0l2 2c.5.5.5 1.3 0 1.8-2.5 2.5-6.5 1-9-1.5S.5 6.5 3 4z"/>
+              </svg>
+              <div>
+                <div class="cd-lbl">Phone / WhatsApp</div>
+                <!-- PLACEHOLDER: Replace with your actual phone number -->
+                <div class="cd-val">+971 50 000 0000</div>
+                <div class="cd-avail">Available 24/7</div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <svg class="cd-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="9" cy="7" r="3"/>
+                <path d="M9 2C5.7 2 3 4.7 3 8c0 5.5 6 9 6 9s6-3.5 6-9c0-3.3-2.7-6-6-6z"/>
+              </svg>
+              <div>
+                <div class="cd-lbl">Headquarters</div>
+                <!-- PLACEHOLDER: Replace with your actual office locations -->
+                <div class="cd-val">Dubai, UAE · London, UK</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="sr d2">
+            <!--
+              FORMSPREE SETUP:
+              1. Create a free account at https://formspree.io
+              2. Create a new form project and copy your unique form endpoint URL
+              3. Replace "https://formspree.io/f/YOUR_FORM_ID" in the action attribute below
+              4. Formspree will forward submissions to your configured email address
+              5. You can also enable reCAPTCHA and spam filtering from the Formspree dashboard
+            -->
+            <form
+              class="form-box"
+              id="contactForm"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+              novalidate
+              aria-label="Request a flight enquiry form"
+            >
+              <h3 class="form-title">Request a Flight</h3>
+
+              <div id="formBody">
+                <div class="form-row">
+                  <div class="f-field" id="ff-name">
+                    <label class="f-label" for="fname">Full Name <span aria-label="required">*</span></label>
+                    <input
+                      class="f-input" type="text" id="fname" name="name"
+                      autocomplete="name" required aria-required="true"
+                      aria-describedby="fname-err" placeholder="Your full name"
+                    />
+                    <span class="f-err" id="fname-err" role="alert">Please enter your name.</span>
+                  </div>
+                  <div class="f-field" id="ff-email">
+                    <label class="f-label" for="femail">Email Address <span aria-label="required">*</span></label>
+                    <input
+                      class="f-input" type="email" id="femail" name="email"
+                      autocomplete="email" required aria-required="true"
+                      aria-describedby="femail-err" placeholder="you@example.com"
+                    />
+                    <span class="f-err" id="femail-err" role="alert">Please enter a valid email.</span>
+                  </div>
+                </div>
+
+                <div class="f-field" id="ff-phone">
+                  <label class="f-label" for="fphone">Phone / WhatsApp</label>
+                  <input
+                    class="f-input" type="tel" id="fphone" name="phone"
+                    autocomplete="tel" placeholder="+971 50 000 0000"
+                  />
+                </div>
+
+                <div class="f-field" id="ff-trip">
+                  <label class="f-label" for="ftrip">Trip Details <span aria-label="required">*</span></label>
+                  <textarea
+                    class="f-area" id="ftrip" name="trip_details"
+                    required aria-required="true"
+                    aria-describedby="ftrip-err"
+                    placeholder="Route, travel dates, number of passengers, and any preferences — e.g. Dubai to Geneva, 15–17 June, 4 pax, prefer a large-cabin jet"
+                  ></textarea>
+                  <span class="f-err" id="ftrip-err" role="alert">Please describe your trip.</span>
+                </div>
+
+                <button type="submit" class="btn btn-gold f-submit" id="submitBtn">
+                  Send Enquiry
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2 7h10M7 2l5 5-5 5"/>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="form-success" id="formSuccess" aria-live="polite">
+                <div class="fs-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 12l5 5L20 7"/>
+                  </svg>
+                </div>
+                <h3>Enquiry Received</h3>
+                <p>Your advisor will be in touch within the hour.<br>For urgent requests, please call us directly.</p>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ╔══════════════════════════════════════════════════════╗
+       ║  FOOTER                                              ║
+       ╚══════════════════════════════════════════════════════╝ -->
+  <footer class="footer" role="contentinfo">
+    <div class="wrap">
+
+      <div class="footer-top">
+
+        <!-- Brand -->
+        <div>
+          <div class="footer-logo">Habibi <strong>Aviation</strong> Partners</div>
+          <p class="footer-tagline">"The bridge between nations<br>in private aviation."</p>
+          <!-- PLACEHOLDER: Replace href="#" with your actual social media profile URLs -->
+          <nav class="footer-social" aria-label="Social media">
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M2.5 4.5h2.8v9H2.5v-9zm1.4-1.3a1.6 1.6 0 110-3.2 1.6 1.6 0 010 3.2zM13.5 13.5h-2.8V9.1c0-1.1-.4-1.8-1.3-1.8-.7 0-1.1.5-1.3 1-.1.2-.1.5-.1.8v4.4H5.2s.1-7.2 0-9h2.8v1.3c.4-.6 1-1.5 2.5-1.5 1.8 0 3.1 1.2 3.1 3.8v5.4z"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+                <rect x="1.5" y="1.5" width="13" height="13" rx="3.5"/>
+                <circle cx="8" cy="8" r="3"/>
+                <circle cx="11.7" cy="4.3" r=".6" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="WhatsApp">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M8 1a7 7 0 00-6.1 10.4L.6 15.4l4.2-1.4A7 7 0 108 1zm0 1.3a5.7 5.7 0 110 11.4A5.7 5.7 0 018 2.3zm-2 2.5c-.2 0-.5.1-.7.3-.2.3-.7.8-.7 1.8s.7 2 .8 2.1c.1.2 1.4 2.2 3.4 3 .5.2.9.3 1.2.4.5.1 1 .1 1.3 0 .4-.1 1.2-.5 1.4-1 .2-.5.2-.9.1-1-.1-.1-.3-.2-.6-.3s-1.1-.6-1.3-.7c-.2-.1-.3-.1-.5.1-.1.2-.5.7-.6.8-.1.1-.2.1-.4.1A5.3 5.3 0 016.8 9.1c-.1-.2 0-.3.1-.4l.4-.5c.1-.1.1-.2.2-.4 0-.2 0-.3-.1-.4l-.6-1.5c-.1-.4-.3-.5-.5-.5H6z"/>
+              </svg>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-col">
+          <div class="footer-col-hdr">Services</div>
+          <ul>
+            <li><a href="#services">Private Jet Charter</a></li>
+            <li><a href="#services">Aircraft Sales & Acquisition</a></li>
+            <li><a href="#services">Jet Card Programs</a></li>
+            <li><a href="#services">Aircraft Management</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-col">
+          <div class="footer-col-hdr">Company</div>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#why">Why Habibi</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <div class="footer-col-hdr">Contact</div>
+          <!-- PLACEHOLDER: Replace with your actual contact details -->
+          <p>fly@habibiaviationpartners.com</p>
+          <p>+971 50 000 0000</p>
+          <p style="color:rgba(255,255,255,.3)">Dubai, UAE · London, UK</p>
+          <span class="avail-tag">Available 24/7</span>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 Habibi Aviation Partners. All rights reserved.</p>
+        <p class="footer-disc">Habibi Aviation Partners is an independent broker and does not own or operate aircraft. All flights are arranged with licensed, safety-vetted third-party operators.</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script>
+    (() => {
+      'use strict';
+
+      /* ── NAV: scroll solid state ── */
+      const nav = document.getElementById('nav');
+      const onScroll = () => nav.classList.toggle('solid', window.scrollY > 36);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* ── HERO: entrance animation ── */
+      const hero  = document.querySelector('.hero');
+      const heroBg = document.getElementById('heroBg');
+      const fireHero = () => {
+        hero.classList.add('ready');
+        heroBg.classList.add('loaded');
+      };
+      if (document.readyState === 'complete') {
+        requestAnimationFrame(() => setTimeout(fireHero, 80));
+      } else {
+        window.addEventListener('load', () => requestAnimationFrame(() => setTimeout(fireHero, 80)));
+      }
+
+      /* ── HAMBURGER MENU ── */
+      const burger  = document.getElementById('burgerBtn');
+      const drawer  = document.getElementById('navDrawer');
+      const mLinks  = document.querySelectorAll('.m-link');
+      let isOpen = false;
+
+      function openDrawer() {
+        isOpen = true;
+        burger.setAttribute('aria-expanded', 'true');
+        burger.setAttribute('aria-label', 'Close navigation menu');
+        drawer.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDrawer() {
+        isOpen = false;
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Open navigation menu');
+        drawer.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      burger.addEventListener('click', () => isOpen ? closeDrawer() : openDrawer());
+      mLinks.forEach(l => l.addEventListener('click', closeDrawer));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen) closeDrawer(); });
+      window.addEventListener('resize', () => { if (window.innerWidth > 920 && isOpen) closeDrawer(); });
+
+      /* ── SCROLL REVEAL ── */
+      const srEls = document.querySelectorAll('.sr');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              observer.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -44px 0px' });
+        srEls.forEach(el => observer.observe(el));
+      } else {
+        srEls.forEach(el => el.classList.add('in'));
+      }
+
+      /* ── SMOOTH ANCHOR SCROLL (accounts for sticky nav height) ── */
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const id = a.getAttribute('href').slice(1);
+          if (!id) return;
+          const target = document.getElementById(id);
+          if (!target) return;
+          e.preventDefault();
+          const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 80;
+          const top  = target.getBoundingClientRect().top + window.scrollY - navH;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+
+      /* ── CONTACT FORM VALIDATION ── */
+      const form       = document.getElementById('contactForm');
+      const formBody   = document.getElementById('formBody');
+      const formSuccess = document.getElementById('formSuccess');
+      const submitBtn  = document.getElementById('submitBtn');
+
+      const validators = {
+        fname:  { el: document.getElementById('fname'),  wrap: 'ff-name',  test: v => v.trim().length >= 2 },
+        femail: { el: document.getElementById('femail'), wrap: 'ff-email', test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+        ftrip:  { el: document.getElementById('ftrip'),  wrap: 'ff-trip',  test: v => v.trim().length >= 8 },
+      };
+
+      function checkField(key) {
+        const { el, wrap, test } = validators[key];
+        const ok = test(el.value);
+        el.classList.toggle('err', !ok);
+        el.setAttribute('aria-invalid', String(!ok));
+        document.getElementById(wrap).classList.toggle('bad', !ok);
+        return ok;
+      }
+
+      Object.keys(validators).forEach(key => {
+        const el = validators[key].el;
+        el.addEventListener('blur',  () => checkField(key));
+        el.addEventListener('input', () => { if (el.classList.contains('err')) checkField(key); });
+      });
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        const valid = Object.keys(validators).map(checkField).every(Boolean);
+        if (!valid) {
+          const first = Object.keys(validators).find(k => !validators[k].test(validators[k].el.value));
+          if (first) validators[first].el.focus();
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending&hellip;';
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' },
+          });
+          if (res.ok) {
+            formBody.style.display = 'none';
+            form.querySelector('.form-title').style.display = 'none';
+            formSuccess.style.display = 'block';
+            formSuccess.focus();
+          } else {
+            throw new Error('non-ok');
+          }
+        } catch {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Send Enquiry <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5"/></svg>';
+          alert('There was a problem sending your enquiry. Please email or call us directly — we apologise for the inconvenience.');
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
